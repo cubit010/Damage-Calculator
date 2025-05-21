@@ -1,0 +1,145 @@
+﻿<Window x:Class="Damage_Calc.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Minecraft Damage Calculator" Height="600" Width="600">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="20">
+            <StackPanel>
+                <TextBlock Text="Minecraft Damage Calculator" FontSize="24" Margin="0 0 0 20" />
+
+                <TextBlock Text="Weapon:" />
+                <ComboBox x:Name="WeaponComboBox" SelectionChanged="WeaponComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Wooden Sword"/>
+                    <ComboBoxItem Content="Stone Sword"/>
+                    <ComboBoxItem Content="Iron Sword"/>
+                    <ComboBoxItem Content="Diamond Sword"/>
+                    <ComboBoxItem Content="Netherite Sword"/>
+                    <ComboBoxItem Content="Wooden Axe"/>
+                    <ComboBoxItem Content="Stone Axe"/>
+                    <ComboBoxItem Content="Iron Axe"/>
+                    <ComboBoxItem Content="Diamond Axe"/>
+                    <ComboBoxItem Content="Netherite Axe"/>
+                    <ComboBoxItem Content="Mace"/>
+                </ComboBox>
+
+                <StackPanel x:Name="SharpnessPanel">
+                    <TextBlock Text="Sharpness"/>
+                    <ComboBox x:Name="SharpnessComboBox">
+                        <ComboBoxItem Content="0"/>
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="2"/>
+                        <ComboBoxItem Content="3"/>
+                        <ComboBoxItem Content="4"/>
+                        <ComboBoxItem Content="5"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel x:Name="MaceOptionsPanel" Visibility="Collapsed">
+                    <TextBlock Text="Mace Enchant"/>
+                    <ComboBox x:Name="MaceModeComboBox" SelectionChanged="MaceModeComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Density"/>
+                        <ComboBoxItem Content="Breach"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Enchant Level"/>
+                    <ComboBox x:Name="MaceLevelComboBox">
+                        <!-- Filled dynamically -->
+                    </ComboBox>
+
+                    <TextBlock Text="Blocks Dropped"/>
+                    <TextBox x:Name="BlocksDroppedInput"/>
+                </StackPanel>
+
+                <TextBlock Text="Critical Hit?" Margin="0 10 0 0" />
+                <CheckBox x:Name="IsCriticalCheckBox" Content="Yes" />
+
+                <TextBlock Text="Armor Slots" FontSize="18" Margin="0 20 0 10" />
+
+                <TextBlock Text="Helmet:" />
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox x:Name="HelmetComboBox" Width="200">
+                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="Turtle" />
+                        <ComboBoxItem Content="Leather" />
+                        <ComboBoxItem Content="Gold" />
+                        <ComboBoxItem Content="Chainmail" />
+                        <ComboBoxItem Content="Iron" />
+                        <ComboBoxItem Content="Diamond" />
+                        <ComboBoxItem Content="Netherite" />
+                    </ComboBox>
+                    <ComboBox x:Name="HelmetProtComboBox" Width="80" Margin="10,0,0,0">
+                        <ComboBoxItem Content="0" />
+                        <ComboBoxItem Content="1" />
+                        <ComboBoxItem Content="2" />
+                        <ComboBoxItem Content="3" />
+                        <ComboBoxItem Content="4" />
+                    </ComboBox>
+                </StackPanel>
+
+                <TextBlock Text="Chestplate:" />
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox x:Name="ChestComboBox" Width="200">
+                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="Leather" />
+                        <ComboBoxItem Content="Gold" />
+                        <ComboBoxItem Content="Chainmail" />
+                        <ComboBoxItem Content="Iron" />
+                        <ComboBoxItem Content="Diamond" />
+                        <ComboBoxItem Content="Netherite" />
+                    </ComboBox>
+                    <ComboBox x:Name="ChestProtComboBox" Width="80" Margin="10,0,0,0">
+                        <ComboBoxItem Content="0" />
+                        <ComboBoxItem Content="1" />
+                        <ComboBoxItem Content="2" />
+                        <ComboBoxItem Content="3" />
+                        <ComboBoxItem Content="4" />
+                    </ComboBox>
+                </StackPanel>
+
+                <TextBlock Text="Leggings:" />
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox x:Name="LegsComboBox" Width="200">
+                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="Leather" />
+                        <ComboBoxItem Content="Gold" />
+                        <ComboBoxItem Content="Chainmail" />
+                        <ComboBoxItem Content="Iron" />
+                        <ComboBoxItem Content="Diamond" />
+                        <ComboBoxItem Content="Netherite" />
+                    </ComboBox>
+                    <ComboBox x:Name="LegsProtComboBox" Width="80" Margin="10,0,0,0">
+                        <ComboBoxItem Content="0" />
+                        <ComboBoxItem Content="1" />
+                        <ComboBoxItem Content="2" />
+                        <ComboBoxItem Content="3" />
+                        <ComboBoxItem Content="4" />
+                    </ComboBox>
+                </StackPanel>
+
+                <TextBlock Text="Boots:" />
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox x:Name="BootsComboBox" Width="200">
+                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="Leather" />
+                        <ComboBoxItem Content="Gold" />
+                        <ComboBoxItem Content="Chainmail" />
+                        <ComboBoxItem Content="Iron" />
+                        <ComboBoxItem Content="Diamond" />
+                        <ComboBoxItem Content="Netherite" />
+                    </ComboBox>
+                    <ComboBox x:Name="BootsProtComboBox" Width="80" Margin="10,0,0,0">
+                        <ComboBoxItem Content="0" />
+                        <ComboBoxItem Content="1" />
+                        <ComboBoxItem Content="2" />
+                        <ComboBoxItem Content="3" />
+                        <ComboBoxItem Content="4" />
+                    </ComboBox>
+                </StackPanel>
+
+                <Button Content="Calculate Damage" Click="CalculateDamage_Click" Margin="0 20 0 0" Height="30" />
+
+                <TextBlock x:Name="ResultTextBlock" FontSize="16" Margin="0 20 0 0" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>
