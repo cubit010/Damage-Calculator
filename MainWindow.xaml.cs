@@ -110,7 +110,6 @@ namespace Damage_Calc
                 {
                     // Placeholder: implement Mace damage logic here
                     int baseDamage = 6;
-                    // Example: You can retrieve the mode, level, and blocks dropped like this:
 
                     string enchant = ((ComboBoxItem)MaceModeComboBox.SelectedItem)?.Content.ToString();
                     int enchantLvl = int.TryParse(((ComboBoxItem)MaceLevelComboBox.SelectedItem)?.Content.ToString(), out int lvl) ? lvl : 0;
