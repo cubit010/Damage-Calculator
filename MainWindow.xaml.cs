@@ -219,14 +219,15 @@ namespace Damage_Calc
                 double armorReduction;
                 int breachLevel = 0;
 
-                armorReduction = 1 - Math.Min(20, Math.Max(armorPoints / 5, armorPoints - (4 * initialDamage) / (armorToughness + 8))) / 25;
-                
+                armorReduction = Math.Min(20, Math.Max(armorPoints / 5, armorPoints - (4 * initialDamage) / (armorToughness + 8))) / 25;
+
                 if (breach)
                 {
                     breachLevel = int.TryParse(((ComboBoxItem)MaceLevelComboBox.SelectedItem)?.Content.ToString(), out int bl) ? bl : 0;
                     armorReduction = Math.Max(0, armorReduction-breachLevel*0.15);
                 }
                
+                armorReduction = 1 - armorReduction;
                 
                 double protReduction = 1 - (0.04 * protTotalLvls);
                 double totalReduction = armorReduction * protReduction;
